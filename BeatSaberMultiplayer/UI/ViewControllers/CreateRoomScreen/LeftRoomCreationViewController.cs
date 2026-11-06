@@ -1,12 +1,12 @@
 ﻿using BeatSaberMultiplayer.Misc;
 using HMUI;
-using SongLoaderPlugin;
-using SongLoaderPlugin.OverrideClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LegacyCore;
+using LegacyCore.Custom;
 using UnityEngine;
 using UnityEngine.UI;
 using VRUI;
@@ -146,7 +146,7 @@ namespace BeatSaberMultiplayer.UI.ViewControllers.CreateRoomScreen
 
         private void SongsTableView_DidSelectRow(TableView sender, int row)
         {
-            if (availableSongs[row] is CustomLevel) SongLoader.Instance.LoadAudioClipForLevel((CustomLevel)availableSongs[row], SongLoaded);
+            if (availableSongs[row] is CustomLevelSO) Loader.customLevels[row].SetAudioClip(availableSongs[row].audioClip);
             else SongLoaded(availableSongs[row]);
         }
 

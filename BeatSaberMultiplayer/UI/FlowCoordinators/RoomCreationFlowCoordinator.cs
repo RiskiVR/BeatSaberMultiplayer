@@ -1,7 +1,6 @@
 ﻿using BeatSaberMultiplayer.Data;
 using BeatSaberMultiplayer.Misc;
 using BeatSaberMultiplayer.UI.ViewControllers.CreateRoomScreen;
-using SongLoaderPlugin;
 using System;
 using System.Collections.Generic;
 using System.Linq;

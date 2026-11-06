@@ -2,7 +2,6 @@
 using BeatSaberMultiplayer.Misc;
 using BeatSaberMultiplayer.UI;
 using HMUI;
-using SongLoaderPlugin.OverrideClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;

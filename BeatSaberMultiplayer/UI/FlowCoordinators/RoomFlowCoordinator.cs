@@ -2,8 +2,6 @@
 using BeatSaberMultiplayer.Misc;
 using BeatSaberMultiplayer.UI.ViewControllers;
 using BeatSaberMultiplayer.UI.ViewControllers.RoomScreen;
-using SongLoaderPlugin;
-using SongLoaderPlugin.OverrideClasses;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +9,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LegacyCore;
+using LegacyCore.Custom;
 using UnityEngine;
 using VRUI;
 
@@ -666,9 +666,10 @@ namespace BeatSaberMultiplayer.UI.FlowCoordinators
                 _difficultySelectionViewController.PlayPressed += PlayPressed;
                 _difficultySelectionViewController.ReadyPressed += ReadyPressed;
             }
-            if (song is CustomLevel)
+            if (song is CustomLevelSO)
             {
-                SongLoader.Instance.LoadAudioClipForLevel((CustomLevel)song, SongLoaded);
+                // SongLoader.Instance.LoadAudioClipForLevel((CustomLevel)song, SongLoaded);
+                // TODO: Figure out what the hell this is supposed to be
             }
             else
             {
@@ -718,9 +719,9 @@ namespace BeatSaberMultiplayer.UI.FlowCoordinators
             {
                 _roomNavigationController.PushViewController(_leaderboardViewController, false);
             }
-            if (song != null && song is CustomLevel)
+            if (song != null && song is CustomLevelSO)
             {
-                SongLoader.Instance.LoadAudioClipForLevel((CustomLevel)song, SongLoaded);
+                //SongLoader.Instance.LoadAudioClipForLevel((CustomLevel)song, SongLoaded);
             }
             else
             {

@@ -2,8 +2,8 @@
 using BeatSaberMultiplayer.UI.FlowCoordinators;
 using BeatSaberMultiplayer.UI.ViewControllers;
 using SimpleJSON;
-using SongLoaderPlugin;
-using SongLoaderPlugin.OverrideClasses;
+using LegacyCore;
+using LegacyCore.Custom;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -50,7 +50,7 @@ namespace BeatSaberMultiplayer.UI
                 instance = this;
                 GetUserInfo.UpdateUserInfo();
                 SceneManager.activeSceneChanged += SceneManager_activeSceneChanged;
-                SongLoader.SongsLoadedEvent += SongsLoaded;
+                Loader.levelsLoadedEvent += SongsLoaded;
                 CreateUI();
             }
         }
@@ -64,7 +64,7 @@ namespace BeatSaberMultiplayer.UI
             }
         }
 
-        public void SongsLoaded(SongLoader sender, List<CustomLevel> levels)
+        public void SongsLoaded(Loader sender, List<CustomLevelSO> levels)
         {
             if (_multiplayerButton != null)
             {
@@ -102,7 +102,7 @@ namespace BeatSaberMultiplayer.UI
                 }
 
                 CreateOnlineButton();
-                _multiplayerButton.interactable = SongLoader.AreSongsLoaded;
+                _multiplayerButton.interactable = Loader.isLoaded;
 
                 StartCoroutine(CheckVersion());
 

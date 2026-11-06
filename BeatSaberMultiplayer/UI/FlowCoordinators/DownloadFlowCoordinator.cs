@@ -2,7 +2,6 @@
 using BeatSaberMultiplayer.Misc;
 using BeatSaberMultiplayer.UI.ViewControllers.RoomScreen;
 using SimpleJSON;
-using SongLoaderPlugin;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,6 +10,8 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using LegacyCore;
+using LegacyCore.Custom;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -39,9 +40,9 @@ namespace BeatSaberMultiplayer.UI.FlowCoordinators
 #if DEBUG
             Log.Info("All songs downloaded!");
 #endif
-            SongLoader.SongsLoadedEvent -= SongsLoadedEvent;
-            SongLoader.SongsLoadedEvent += SongsLoadedEvent;
-            SongLoader.Instance.RefreshSongs(false);
+            Loader.levelsLoadedEvent -= SongsLoadedEvent;
+            Loader.levelsLoadedEvent += SongsLoadedEvent;
+            Loader.instance.ReloadLevels(false);
             HideQueue();
         }
 
@@ -56,7 +57,7 @@ namespace BeatSaberMultiplayer.UI.FlowCoordinators
             }
         }
 
-        private void SongsLoadedEvent(SongLoader sender, List<SongLoaderPlugin.OverrideClasses.CustomLevel> loadedSongs)
+        private void SongsLoadedEvent(Loader sender, List<CustomLevelSO> loadedSongs)
         {
             AllSongsDownloaded?.Invoke();
         }
